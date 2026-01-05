@@ -84,39 +84,35 @@ document.querySelectorAll(".nav-link").forEach((link) => {
 });
 
 (function () {
-  emailjs.init("Vx4Qw62kx9gvgKgd2"); // public key
+  emailjs.init("Vx4Qw62kx9gvgKgd2");
 })();
 
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-    const statusDiv = document.getElementById("form-status");
-    const submitBtn = this.querySelector('button[type="submit"]');
+  const statusDiv = document.getElementById("form-status");
+  const submitBtn = this.querySelector('button[type="submit"]');
 
-    statusDiv.textContent = "Sending...";
-    statusDiv.style.color = "blue";
-    submitBtn.disabled = true;
+  statusDiv.textContent = "Sending...";
+  statusDiv.style.color = "blue";
+  submitBtn.disabled = true;
 
-    const timeInput = document.createElement("input");
-    timeInput.type = "hidden";
-    timeInput.name = "time";
-    timeInput.value = new Date().toLocaleString();
-    this.appendChild(timeInput);
-
-    emailjs.sendForm("service_4sy5p79", "template_n382ch3", this).then(
-      function () {
-        statusDiv.textContent = "✓ Message sent successfully!";
-        statusDiv.style.color = "green";
-        document.getElementById("contactForm").reset();
-        submitBtn.disabled = false;
-      },
-      function (error) {
-        statusDiv.textContent = "✗ Failed to send. Please try again.";
-        statusDiv.style.color = "red";
-        submitBtn.disabled = false;
-        console.error("EmailJS Error:", error);
-      }
-    );
+  emailjs.send("service_4sy5p79", "template_n382ch3", {
+    name: this.user_name.value,        
+    message: this.message.value,       
+    reply_to: this.reply_to.value,
+    time: new Date().toLocaleString(), 
+  })
+  .then(() => {
+    statusDiv.textContent = "✓ Message sent successfully!";
+    statusDiv.style.color = "green";
+    this.reset();
+    submitBtn.disabled = false;
+  })
+  .catch(err => {
+    console.error(err);
+    statusDiv.textContent = "✗ Failed to send.";
+    statusDiv.style.color = "red";
+    submitBtn.disabled = false;
   });
+});
