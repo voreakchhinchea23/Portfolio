@@ -99,6 +99,12 @@ document
     statusDiv.style.color = "blue";
     submitBtn.disabled = true;
 
+    const timeInput = document.createElement("input");
+    timeInput.type = "hidden";
+    timeInput.name = "time";
+    timeInput.value = new Date().toLocaleString();
+    this.appendChild(timeInput);
+
     emailjs.sendForm("service_4sy5p79", "template_n382ch3", this).then(
       function () {
         statusDiv.textContent = "✓ Message sent successfully!";
@@ -110,7 +116,7 @@ document
         statusDiv.textContent = "✗ Failed to send. Please try again.";
         statusDiv.style.color = "red";
         submitBtn.disabled = false;
-        console.log("Error:", error);
+        console.error("EmailJS Error:", error);
       }
     );
   });
