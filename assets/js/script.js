@@ -83,4 +83,34 @@ document.querySelectorAll(".nav-link").forEach((link) => {
   });
 });
 
+(function () {
+  emailjs.init("Vx4Qw62kx9gvgKgd2"); // public key
+})();
 
+document
+  .getElementById("contactForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const statusDiv = document.getElementById("form-status");
+    const submitBtn = this.querySelector('button[type="submit"]');
+
+    statusDiv.textContent = "Sending...";
+    statusDiv.style.color = "blue";
+    submitBtn.disabled = true;
+
+    emailjs.sendForm("service_4sy5p79", "template_n382ch3", this).then(
+      function () {
+        statusDiv.textContent = "✓ Message sent successfully!";
+        statusDiv.style.color = "green";
+        document.getElementById("contactForm").reset();
+        submitBtn.disabled = false;
+      },
+      function (error) {
+        statusDiv.textContent = "✗ Failed to send. Please try again.";
+        statusDiv.style.color = "red";
+        submitBtn.disabled = false;
+        console.log("Error:", error);
+      }
+    );
+  });

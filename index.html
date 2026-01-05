@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chhinchea Voreak</title>
-     <link rel="icon" href="assets/img/icon/icon.png" type="image/png">
+    <link rel="icon" href="assets/img/icon/icon.png" type="image/png" />
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
       rel="stylesheet"
@@ -600,7 +600,6 @@
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </section>
@@ -644,14 +643,11 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <form
-              action="https://formsubmit.co/330926b7ef742de0bd6c9d49b8499b15" method="POST"
-              class="contact-form"
-            >
+            <form class="contact-form" id="contactForm">
               <input
                 type="text"
                 class="form-control"
-                name="name"
+                name="from_name"
                 placeholder="Your Name"
                 required
               />
@@ -659,7 +655,7 @@
               <input
                 type="email"
                 class="form-control"
-                name="email"
+                name="reply_to"
                 placeholder="Your Email"
                 required
               />
@@ -667,7 +663,7 @@
               <textarea
                 class="form-control"
                 rows="5"
-                name="msg"
+                name="message"
                 placeholder="Your Message"
                 required
               ></textarea>
@@ -675,6 +671,7 @@
               <button type="submit" class="btn btn-submit">
                 <i class="fas fa-paper-plane me-2"></i>Send Message
               </button>
+              <div id="form-status" style="margin-top: 10px"></div>
             </form>
           </div>
         </div>
@@ -703,7 +700,7 @@
         </div>
       </div>
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
