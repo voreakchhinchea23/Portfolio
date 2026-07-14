@@ -3,706 +3,483 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chhinchea Voreak</title>
+    <title>Chhinchea Voreak | Backend Developer</title>
     <link rel="icon" href="assets/img/icon/icon.png" type="image/png" />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    
+    <!-- FontAwesome Icons -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       rel="stylesheet"
     />
+    
+    <!-- Custom Style -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#home">Chhinchea Voreak</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#resume">Resume</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#projects">Projects</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Home Section -->
-    <section id="home">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-6 hero-content">
-            <h1 class="hero-title">Hi, I'm Voreak!</h1>
-            <h2 class="hero-subtitle">Backend Developer</h2>
+    
+    <main class="max-w-container px-4">
+      
+      <!-- Home / Hero Section -->
+      <section id="home" class="fade-up">
+        <div class="hero-wrapper">
+          <div>
+            <h1 class="hero-title">Hi, I'm Voreak</h1>
+            <h2 class="hero-subtitle">Backend Developer building scalable systems.</h2>
             <p class="hero-description">
-              I’m always eager to learn new things and improve my skills.
+              I'm an aspiring backend engineer always eager to learn new technologies, write clean maintainable code, and solve complex backend problems.
             </p>
-            <a href="#contact" class="btn btn-custom btn-primary-custom"
-              >Get In Touch</a
-            >
           </div>
-          <div
-            class="col-lg-6 d-flex justify-content-center justify-content-lg-end"
-          >
-            <div class="hero-profile-image">
+          <div class="avatar-wrapper" id="profileOrbit" tabindex="0" aria-label="Voreak's technology skills. Hover or tap to animate.">
+            <img
+              class="avatar-image"
+              src="assets/img/profile.png"
+              alt="Chhinchea Voreak"
+              onerror="this.src='assets/img/profile-2.png'"
+            />
+            <div class="avatar-orbit" aria-hidden="true">
+              <span class="orbit-icon" style="--i: 0; --brand: #9b4fdb" title="C#"><i class="fas fa-hashtag"></i></span>
+              <span class="orbit-icon" style="--i: 1; --brand: #512bd4" title="ASP.NET Core"><i class="fas fa-layer-group"></i></span>
+              <span class="orbit-icon" style="--i: 2; --brand: #3776ab" title="Python"><i class="fab fa-python"></i></span>
+              <span class="orbit-icon" style="--i: 3; --brand: #02569b" title="Flutter"><i class="fas fa-mobile-alt"></i></span>
+              <span class="orbit-icon" style="--i: 4; --brand: #e34f26" title="HTML5"><i class="fab fa-html5"></i></span>
+              <span class="orbit-icon" style="--i: 5; --brand: #1572b6" title="CSS3"><i class="fab fa-css3-alt"></i></span>
+              <span class="orbit-icon" style="--i: 6; --brand: #e6bd00" title="JavaScript"><i class="fab fa-js"></i></span>
+              <span class="orbit-icon" style="--i: 7; --brand: #7952b3" title="Bootstrap"><i class="fab fa-bootstrap"></i></span>
+              <span class="orbit-icon" style="--i: 8; --brand: #00758f" title="SQL"><i class="fas fa-database"></i></span>
+              <span class="orbit-icon" style="--i: 9; --brand: #f80000" title="Oracle"><i class="fas fa-server"></i></span>
+              <span class="orbit-icon" style="--i: 10; --brand: #007396" title="Java"><i class="fab fa-java"></i></span>
+              <span class="orbit-icon" style="--i: 11; --brand: #00599c" title="C++"><i class="fas fa-code"></i></span>
+              <span class="orbit-icon" style="--i: 12; --brand: #f05032" title="Git"><i class="fab fa-git-alt"></i></span>
+              <span class="orbit-icon" style="--i: 13; --brand: #6b7280" title="Unity"><i class="fab fa-unity"></i></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="fade-up delay-1">
+        <h2 class="heading-2">About</h2>
+        <div class="prose">
+          <p>
+            I'm an aspiring backend developer with a strong interest in building efficient, scalable, and secure applications using the <strong>.NET ecosystem</strong>. I mainly work with <strong>C#</strong> and <strong>ASP.NET Core</strong>, focusing on developing RESTful APIs and backend services that support modern web applications.
+          </p>
+          <p>
+            I enjoy solving problems and continuously improving my skills by following .NET best practices and clean code principles. I’m learning to apply SOLID design patterns and performance optimization techniques to write maintainable and reliable backend systems.
+          </p>
+        </div>
+      </section>
+
+      <!-- Work Experience Section -->
+      <section id="work" class="fade-up delay-2">
+        <h2 class="heading-2">Work Experience</h2>
+        <div class="timeline-list">
+          
+          <div class="timeline-item">
+            <div class="timeline-logo">
+              <i class="fas fa-building"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-title">
+                  CBRE Cambodia <i class="fas fa-chevron-right timeline-chevron"></i>
+                </h3>
+                <span class="timeline-date">Sep 2025 – Dec 2025</span>
+              </div>
+              <div class="timeline-subtitle">Data Collection Intern</div>
+              <div class="timeline-details">
+                <p>Conducted research and data collection to support business intelligence analysis and operational reporting.</p>
+                <ul>
+                  <li>Researched and collected data to support BI analysis</li>
+                  <li>Assisted with the Green Net project through field data collection</li>
+                  <li>Conducted on-site visits to major malls in Phnom Penh for plan stacking and operational data gathering</li>
+                  <li>Organized and maintained collected information for analysis</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-logo">
+              <i class="fas fa-coffee"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-title">
+                  Nine Café - Tuol Sangke <i class="fas fa-chevron-right timeline-chevron"></i>
+                </h3>
+                <span class="timeline-date">Dec 2023 – Aug 2025</span>
+              </div>
+              <div class="timeline-subtitle">Barista</div>
+              <div class="timeline-details">
+                <ul>
+                  <li>Prepared and served beverages, ensuring quality and consistency</li>
+                  <li>Handled transactions and managed daily sales</li>
+                  <li>Maintained a clean and organized café environment</li>
+                  <li>Provided friendly and efficient customer service</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section id="education" class="fade-up delay-3">
+        <h2 class="heading-2">Education</h2>
+        <div class="timeline-list">
+          
+          <div class="timeline-item">
+            <div class="timeline-logo">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-title">
+                  Norton University <i class="fas fa-chevron-right timeline-chevron"></i>
+                </h3>
+                <span class="timeline-date">2024 – 2027 (Expected)</span>
+              </div>
+              <div class="timeline-subtitle">Bachelor of Computer Science (Major: Software Development - Year 3)</div>
+              <div class="timeline-details">
+                <p>Pursuing deep studies in algorithms, object-oriented programming, data structures, and database management systems.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-logo">
+              <i class="fas fa-school"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-title">
+                  Paññāsāstra International School <i class="fas fa-chevron-right timeline-chevron"></i>
+                </h3>
+                <span class="timeline-date">Dec 2023 – Jun 2025</span>
+              </div>
+              <div class="timeline-subtitle">Diploma of General English Language</div>
+              <div class="timeline-details">
+                <p>Completed intensive training in English communication, reading, writing, and professional vocabulary.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-logo">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-title">
+                  Kampong Trabek High School <i class="fas fa-chevron-right timeline-chevron"></i>
+                </h3>
+                <span class="timeline-date">2020 – 2023</span>
+              </div>
+              <div class="timeline-subtitle">High School Graduate</div>
+              <div class="timeline-details">
+                <p>Completed general high school curriculum with a focus on science and mathematics.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Certifications Section -->
+      <section id="certifications" class="fade-up delay-4">
+        <h2 class="heading-2">Certifications</h2>
+        <div class="timeline-list">
+          
+          <div class="timeline-item">
+            <div class="timeline-logo">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-title">The Complete ASP.NET Core 9 Course</h3>
+                <span class="timeline-date">2025</span>
+              </div>
+              <div class="timeline-subtitle">Udemy Certified (Tutorials.eu by Denis Panjuta)</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-logo">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-title">Complete C# Masterclass</h3>
+                <span class="timeline-date">2024</span>
+              </div>
+              <div class="timeline-subtitle">Udemy Certified (Tutorials.eu by Denis Panjuta)</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-logo">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-header">
+                <h3 class="timeline-title">Beginning C++ Programming</h3>
+                <span class="timeline-date">2024</span>
+              </div>
+              <div class="timeline-subtitle">Udemy Certified (Tim Buchalka's Learn Programming Academy)</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" class="fade-up">
+        <h2 class="heading-2">Skills</h2>
+        <p class="skills-hint">Hover a skill—or tap it on mobile—to see my current proficiency.</p>
+        <div class="skills-container">
+          <button class="skill-pill" type="button" data-level="80"><i class="fas fa-hashtag"></i> C#</button>
+          <button class="skill-pill" type="button" data-level="75"><i class="fas fa-layer-group"></i> ASP.NET Core</button>
+          <button class="skill-pill" type="button" data-level="60"><i class="fab fa-python"></i> Python & Flask</button>
+          <button class="skill-pill" type="button" data-level="55"><i class="fas fa-mobile-alt"></i> Dart & Flutter</button>
+          <button class="skill-pill" type="button" data-level="75"><i class="fab fa-html5"></i> HTML/CSS/JS</button>
+          <button class="skill-pill" type="button" data-level="70"><i class="fab fa-bootstrap"></i> Bootstrap</button>
+          <button class="skill-pill" type="button" data-level="75"><i class="fas fa-database"></i> SQL Server</button>
+          <button class="skill-pill" type="button" data-level="60"><i class="fas fa-database"></i> Oracle SQL</button>
+          <button class="skill-pill" type="button" data-level="80"><i class="fas fa-plug"></i> RESTful API</button>
+          <button class="skill-pill" type="button" data-level="60"><i class="fab fa-java"></i> Java</button>
+          <button class="skill-pill" type="button" data-level="65"><i class="fas fa-code"></i> C++</button>
+          <button class="skill-pill" type="button" data-level="50"><i class="fas fa-shield-alt"></i> Cybersecurity Basics</button>
+          <button class="skill-pill" type="button" data-level="75"><i class="fab fa-git-alt"></i> Git & GitHub</button>
+          <button class="skill-pill" type="button" data-level="55"><i class="fab fa-unity"></i> Unity Game Dev</button>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="fade-up">
+        <div class="text-center mb-5">
+          <span class="section-badge">My Projects</span>
+          <h2 class="section-header-title">Check out my latest work</h2>
+          <p class="section-header-desc mx-auto">
+            I've built systems ranging from café databases to backend APIs. Here are some of my recent software projects.
+          </p>
+        </div>
+        
+        <div class="projects-grid">
+          
+          <!-- Project 1 -->
+          <div class="project-card">
+            <a href="#" class="project-img-link">
               <img
-                src="assets/img/profile.png"
-                alt="Chhinchea Voreak Profile"
+                src="assets/img/projects/ninecafemangementsystem.png"
+                alt="Nine Cafe Management System"
+                class="project-card-img"
               />
-              <div class="tech-orbit">
-                <!-- C# / ASP.NET -->
-                <div
-                  class="tech-icon"
-                  style="color: #512bd4"
-                  title="C# / ASP.NET"
-                >
-                  <i class="fab fa-cuttlefish"></i>
-                </div>
-                <div class="tech-icon" style="color: #512bd4" title="ASP.NET">
-                  <i class="fas fa-code"></i>
-                </div>
-
-                <!-- C++ -->
-                <div class="tech-icon" style="color: #00599c" title="C++">
-                  <i class="fas fa-plus"></i>
-                </div>
-
-                <!-- Python / Flask -->
-                <div class="tech-icon" style="color: #3776ab" title="Python">
-                  <i class="fab fa-python"></i>
-                </div>
-                <div class="tech-icon" style="color: #000000" title="Flask">
-                  <i class="fas fa-flask"></i>
-                </div>
-
-                <!-- Databases -->
-                <div class="tech-icon" style="color: #00758f" title="SQL">
-                  <i class="fas fa-database"></i>
-                </div>
-                <div
-                  class="tech-icon"
-                  style="color: #f80000"
-                  title="Oracle Database"
-                >
-                  <i class="fas fa-database"></i>
-                </div>
-
-                <!-- Web -->
-                <div class="tech-icon" style="color: #e34f26" title="HTML5">
-                  <i class="fab fa-html5"></i>
-                </div>
-                <div class="tech-icon" style="color: #1572b6" title="CSS3">
-                  <i class="fab fa-css3-alt"></i>
-                </div>
-                <div
-                  class="tech-icon"
-                  style="color: #f7df1e"
-                  title="JavaScript"
-                >
-                  <i class="fab fa-js"></i>
-                </div>
-                <div class="tech-icon" style="color: #7952b3" title="Bootstrap">
-                  <i class="fab fa-bootstrap"></i>
-                </div>
-
-                <!-- Java -->
-                <div class="tech-icon" style="color: #007396" title="Java">
-                  <i class="fab fa-java"></i>
-                </div>
-
-                <!-- Dart / Flutter -->
-                <div class="tech-icon" style="color: #0175c2" title="Dart">
-                  <i class="fas fa-code"></i>
-                </div>
-                <div class="tech-icon" style="color: #02569b" title="Flutter">
-                  <i class="fas fa-mobile-alt"></i>
-                </div>
-
-                <!-- Kali Linux -->
-                <div
-                  class="tech-icon"
-                  style="color: #557c94"
-                  title="Kali Linux"
-                >
-                  <i class="fab fa-linux"></i>
-                </div>
-                <div class="tech-icon" style="color: #512bd4">
-                  <i class="fab fa-cuttlefish"></i>
-                </div>
-                <div class="tech-icon" style="color: #00599c">
-                  <i class="fas fa-plus"></i>
-                </div>
-                <div class="tech-icon" style="color: #007396">
-                  <i class="fab fa-java"></i>
-                </div>
-                <div class="tech-icon" style="color: #3776ab">
-                  <i class="fab fa-python"></i>
-                </div>
-                <div class="tech-icon" style="color: #e34f26">
-                  <i class="fab fa-html5"></i>
-                </div>
-                <div class="tech-icon" style="color: #1572b6">
-                  <i class="fab fa-css3-alt"></i>
-                </div>
-                <div class="tech-icon" style="color: #f7df1e">
-                  <i class="fab fa-js"></i>
-                </div>
-                <div class="tech-icon" style="color: #00758f">
-                  <i class="fas fa-database"></i>
-                </div>
-                <div class="tech-icon" style="color: #512bd4">
-                  <i class="fas fa-code"></i>
-                </div>
-                <div class="tech-icon" style="color: #000000">
-                  <i class="fab fa-python"></i>
-                </div>
-                <div class="tech-icon" style="color: #f80000">
-                  <i class="fas fa-database"></i>
-                </div>
-                <div class="tech-icon" style="color: #02569b">
-                  <i class="fas fa-mobile-alt"></i>
-                </div>
-                <div class="tech-icon" style="color: #000000">
-                  <i class="fab fa-unity"></i>
-                </div>
+            </a>
+            <div class="project-card-body">
+              <h3 class="project-card-title">Nine Cafe Management</h3>
+              <span class="project-card-date">2025</span>
+              <p class="project-card-desc">
+                An ASP.NET Core financial tracking system with daily income/expense logs, supplier directories, and short-term debt logs.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">C#</span>
+                <span class="project-tag">ASP.NET Core</span>
+                <span class="project-tag">EF Core</span>
+                <span class="project-tag">SQL Server</span>
+                <span class="project-tag">Bootstrap</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/voreakchhinchea23" target="_blank" class="project-link-btn">
+                  <i class="fab fa-github"></i> Code
+                </a>
               </div>
             </div>
           </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <a href="#" class="project-img-link">
+              <img
+                src="assets/img/projects/ninecafeproduct.png"
+                alt="Nine Cafe Products"
+                class="project-card-img"
+              />
+            </a>
+            <div class="project-card-body">
+              <h3 class="project-card-title">Nine Cafe Products</h3>
+              <span class="project-card-date">2025</span>
+              <p class="project-card-desc">
+                An admin catalog web application letting users browse cafe drinks and food, redirecting to FoodPanda for ordering.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">C#</span>
+                <span class="project-tag">ASP.NET Core</span>
+                <span class="project-tag">SQL Server</span>
+                <span class="project-tag">HTML/CSS/JS</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/voreakchhinchea23" target="_blank" class="project-link-btn">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <a href="#" class="project-img-link">
+              <img
+                src="assets/img/projects/videogameApi.png"
+                alt="Video Games API"
+                class="project-card-img"
+              />
+            </a>
+            <div class="project-card-body">
+              <h3 class="project-card-title">Video Games API</h3>
+              <span class="project-card-date">2024</span>
+              <p class="project-card-desc">
+                A RESTful WebAPI built on .NET 9 for managing videogame listings, integrated with Scalar for interactive API documentation.
+              </p>
+              <div class="project-tags">
+                <span class="project-tag">C#</span>
+                <span class="project-tag">.NET 9</span>
+                <span class="project-tag">Scalar</span>
+                <span class="project-tag">SQL Server</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com/voreakchhinchea23" target="_blank" class="project-link-btn">
+                  <i class="fab fa-github"></i> Code
+                </a>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- About Section -->
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-          <div class="about-image">
-            <img src="assets/img/profile-2.png" alt="Chhinchea Voreak" />
-          </div>
-          <div class="about-text">
-            <h3>Backend Developer</h3>
-            <p>
-              I'm an aspiring backend developer with a strong interest in
-              building efficient, scalable, and secure applications using the
-              .NET ecosystem. I mainly work with C# and ASP.NET Core, focusing
-              on developing RESTful APIs and backend services that support
-              modern web applications.
-            </p>
-            <p>
-              I enjoy solving problems and continuously improving my skills by
-              following .NET best practices and clean code principles. I’m
-              learning to apply SOLID design patterns and performance
-              optimization techniques to write maintainable and reliable backend
-              systems.
-            </p>
-
-            <div class="skills-list">
-              <!-- C# -->
-              <span class="skill-badge" style="--skill-level: 90%">
-                <i class="fas fa-hashtag"></i> C#
-                <span class="skill-percentage">
-                  90% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- ASP.NET Core -->
-              <span class="skill-badge" style="--skill-level: 75%">
-                <i class="fas fa-layer-group"></i> ASP.NET Core
-                <span class="skill-percentage">
-                  80% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- Python & Flask -->
-              <span class="skill-badge" style="--skill-level: 70%">
-                <i class="fab fa-python"></i> Python & Flask
-                <span class="skill-percentage">
-                  70% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- Dart & Flutter -->
-              <span class="skill-badge" style="--skill-level: 50%">
-                <i class="fas fa-mobile-alt"></i> Dart & Flutter
-                <span class="skill-percentage">
-                  50% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- HTML / CSS / JS / Bootstrap -->
-              <span class="skill-badge" style="--skill-level: 65%">
-                <i class="fab fa-html5"></i> HTML / CSS / JavaScript & Bootstrap
-                <span class="skill-percentage">
-                  65% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- SQL Server -->
-              <span class="skill-badge" style="--skill-level: 70%">
-                <i class="fas fa-database"></i> SQL Server
-                <span class="skill-percentage">
-                  70% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- Oracle -->
-              <span class="skill-badge" style="--skill-level: 60%">
-                <i class="fas fa-database"></i> Oracle
-                <span class="skill-percentage">
-                  60% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- RESTful API -->
-              <span class="skill-badge" style="--skill-level: 70%">
-                <i class="fas fa-plug"></i> RESTful API
-                <span class="skill-percentage">
-                  70% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- Java -->
-              <span class="skill-badge" style="--skill-level: 70%">
-                <i class="fab fa-java"></i> Java
-                <span class="skill-percentage">
-                  70% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- C++ -->
-              <span class="skill-badge" style="--skill-level: 73%">
-                <i class="fas fa-code"></i> C++
-                <span class="skill-percentage">
-                  73% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- Cybersecurity Basics -->
-              <span class="skill-badge" style="--skill-level: 40%">
-                <i class="fas fa-shield-alt"></i> Cybersecurity Basics
-                <span class="skill-percentage">
-                  40% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- Git & GitHub -->
-              <span class="skill-badge" style="--skill-level: 70%">
-                <i class="fab fa-git-alt"></i> Git & GitHub
-                <span class="skill-percentage">
-                  70% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-
-              <!-- Unity -->
-              <span class="skill-badge" style="--skill-level: 50%">
-                <i class="fab fa-unity"></i> Unity Game Development
-                <span class="skill-percentage">
-                  50% Proficiency
-                  <div class="percentage-bar">
-                    <div class="percentage-fill"></div>
-                  </div>
-                </span>
-              </span>
-            </div>
-          </div>
+      <!-- Contact Section -->
+      <section id="contact" class="fade-up">
+        <div class="text-center mb-5">
+          <span class="section-badge">Get In Touch</span>
+          <h2 class="section-header-title">Let's Connect</h2>
+          <p class="section-header-desc mx-auto">
+            Have a question, an opportunity, or just want to say hi? Send me a message below or email me directly at <a href="mailto:cc.voreak@email.com" class="text-underline">cc.voreak@email.com</a>.
+          </p>
         </div>
-      </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume">
-      <div class="container">
-        <h2 class="section-title">Resume</h2>
-        <div class="row">
-          <div class="col-lg-6">
-            <h3 class="mb-4">
-              <i class="fas fa-briefcase me-2"></i>Experience
-            </h3>
-            <div class="resume-item">
-              <h4>Data Collection Intern</h4>
-              <h5>CBRE Cambodia</h5>
-
-              <p class="location">
-                <i class="fas fa-map-marker-alt me-2"></i>Phnom Penh, Cambodia
-              </p>
-
-              <p class="date">
-                <i class="far fa-calendar-alt me-2"></i>Sep 2025 – Dec 2025
-              </p>
-
-              <p>
-                Conducted research and data collection to support business
-                intelligence analysis and operational reporting.
-              </p>
-
-              <ul>
-                <li>Researched and collected data to support BI analysis</li>
-                <li>
-                  Assisted with the Green Net project through field data
-                  collection
-                </li>
-                <li>
-                  Conducted on-site visits to major malls in Phnom Penh for plan
-                  stacking and operational data gathering
-                </li>
-                <li>
-                  Organized and maintained collected information for analysis
-                </li>
-              </ul>
-            </div>
-
-            <div class="resume-item">
-              <h4>Barista</h4>
-              <h5>Nine Café - Tuol Sangke</h5>
-
-              <p class="location">
-                <i class="fas fa-map-marker-alt me-2"></i>Phnom Penh, Cambodia
-              </p>
-
-              <p class="date">
-                <i class="far fa-calendar-alt me-2"></i>Dec 2023 – Aug 2025
-              </p>
-
-              <ul>
-                <li>
-                  Prepared and served beverages, ensuring quality and
-                  consistency
-                </li>
-                <li>Handled transactions and managed daily sales</li>
-                <li>Maintained a clean and organized café environment</li>
-                <li>Provided friendly and efficient customer service</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <h3 class="mb-4">
-              <i class="fas fa-graduation-cap me-2"></i>Education
-            </h3>
-            <!-- Education -->
-            <div class="resume-item">
-              <h4>Bachelor of Computer Science</h4>
-              <h5>Major: Software Development - Year 3</h5>
-
-              <p>
-                <strong>Norton University</strong> &nbsp;|&nbsp; Phnom Penh,
-                Cambodia
-              </p>
-
-              <p class="date">
-                <i class="far fa-calendar-alt me-2"></i>2024 – 2027(Expected)
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>Diploma of General English Language</h4>
-              <h5>Graduate</h5>
-
-              <p>
-                <strong>Paññāsāstra International School</strong> &nbsp;|&nbsp;
-                Phnom Penh, Cambodia
-              </p>
-
-              <p class="date">
-                <i class="far fa-calendar-alt me-2"></i>Dec 2023 – Jun 2025
-              </p>
-            </div>
-            <div class="resume-item">
-              <h4>High School Diploma</h4>
-              <h5>Graduate</h5>
-              <p>
-                <strong>Kampong Trabek High School</strong> &nbsp;|&nbsp; Prey
-                Veng, Cambodia
-              </p>
-
-              <p class="date">
-                <i class="far fa-calendar-alt me-2"></i>2020 – 2023
-              </p>
-            </div>
-
-            <h3 class="mb-4 mt-5">
-              <i class="fas fa-certificate me-2"></i>Certifications
-            </h3>
-            <div class="resume-item">
-              <h4>
-                Udemy Certified: The Complete ASP.NET Core 9 Course for busy
-                developers
-              </h4>
-              <p class="date"><i class="far fa-calendar-alt me-2"></i>2025</p>
-              <p>Tutorials.eu by Denis Panjuta</p>
-            </div>
-            <div class="resume-item">
-              <h4>Udemy Certified: Complete C# Masterclass</h4>
-              <p class="date"><i class="far fa-calendar-alt me-2"></i>2024</p>
-              <p>Tutorials.eu by Denis Panjuta</p>
-            </div>
-            <div class="resume-item">
-              <h4>
-                Udemy Certified: Beginning C++ Programming - From Beginner to
-                Beyond
-              </h4>
-              <p class="date"><i class="far fa-calendar-alt me-2"></i>2024</p>
-              <p>Tim Buchalka's Learn Programming Academy</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <div class="row g-4">
-          <div class="col-12">
-            <div class="project-card">
-              <div class="project-image-container">
-                <img
-                  src="assets/img/projects/ninecafemangementsystem.png"
-                  alt="Nine cafe management system"
-                  class="project-image"
-                />
-                <div class="project-image-overlay">
-                  <i class="fa-solid fa-folder-open"></i>
-                </div>
-              </div>
-              <div class="project-body">
-                <h4>Nine Cafe Management System</h4>
-                <p>
-                  A backend system built using ASP.NET Core that provides
-                  management café financial records. It supports
-                  daily income and expense tracking, date-based data viewing,
-                  supplier management, and debt monitoring for unpaid balances
-                  over short periods.
-                </p>
-                <div class="tech-stack">
-                  <span class="tech-badge">C#</span>
-                  <span class="tech-badge">ASP.NET Core</span>
-                  <span class="tech-badge">EF Core</span>
-                  <span class="tech-badge">SQL Server</span>
-                  <span class="tech-badge">HTML/CSS/JavaScript</span>
-                  <span class="tech-badge">Bootstrap</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="project-card">
-              <div class="project-image-container">
-                <img
-                  src="assets/img/projects/ninecafeproduct.png"
-                  alt="Nine Cafe Product Web App"
-                  class="project-image"
-                />
-                <div class="project-image-overlay">
-                  <i class="fas fa-shopping-cart"></i>
-                </div>
-              </div>
-              <div class="project-body">
-                <h4>Nine Cafe Products</h4>
-                <p>
-                  A system that allow the admin the post the products from Nine
-                  Cafe and normal users can see, after clicking order, it
-                  redirects to FoodPanda.
-                </p>
-                <div class="tech-stack">
-                  <span class="tech-badge">C#</span>
-                  <span class="tech-badge">ASP.NET Core</span>
-                  <span class="tech-badge">EF Core</span>
-                  <span class="tech-badge">SQL Server</span>
-                  <span class="tech-badge">HTML/CSS/JavaScript</span>
-                  <span class="tech-badge">Bootstrap</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12">
-            <div class="project-card">
-              <div class="project-image-container">
-                <img
-                  src="assets/img/projects/videogameApi.png"
-                  alt="Video game api"
-                  class="project-image"
-                />
-                <div class="project-image-overlay">
-                  <i class="fa-solid fa-gamepad"></i>
-                </div>
-              </div>
-              <div class="project-body">
-                <h4>Video Games API</h4>
-                <p>
-                  A backend project that using ASP.NET Core WebAPI to create a
-                  RESTful API project for video game posting and Scalar for CRUD
-                  operation.
-                </p>
-                <div class="tech-stack">
-                  <span class="tech-badge">C#</span>
-                  <span class="tech-badge">.NET 9</span>
-                  <span class="tech-badge">Scalar</span>
-                  <span class="tech-badge">SQL Server</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="row g-4">
-          <div class="col-lg-6">
-            <div class="contact-info">
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <i class="fas fa-envelope"></i>
-                </div>
-                <div>
-                  <h5>Email</h5>
-                  <p class="mb-0">cc.voreak@email.com</p>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <i class="fas fa-phone"></i>
-                </div>
-                <div>
-                  <h5>Phone</h5>
-                  <p class="mb-0">+855 93 441 593 | +855 12 441 593</p>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">
-                  <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div>
-                  <h5>Address</h5>
-                  <p class="mb-0">
-                    Tuol Sangke 2, Russey Keo, Phnom Penh, Cambodia
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <form class="contact-form" id="contactForm">
+        
+        <div class="contact-wrapper">
+          <form class="contact-form" id="contactForm">
+            <div class="form-group">
+              <label for="userName">Name</label>
               <input
                 type="text"
                 class="form-control"
+                id="userName"
                 name="user_name"
                 placeholder="Your Name"
                 required
               />
+            </div>
 
+            <div class="form-group">
+              <label for="replyTo">Email</label>
               <input
                 type="email"
                 class="form-control"
+                id="replyTo"
                 name="reply_to"
                 placeholder="Your Email"
                 required
               />
+            </div>
 
+            <div class="form-group">
+              <label for="message">Message</label>
               <textarea
                 class="form-control"
+                id="message"
                 rows="5"
                 name="message"
                 placeholder="Your Message"
                 required
               ></textarea>
+            </div>
 
-              <button type="submit" class="btn btn-submit">
-                <i class="fas fa-paper-plane me-2"></i>Send Message
-              </button>
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
 
-              <div id="form-status" style="margin-top: 10px"></div>
-            </form>
-          </div>
+            <div id="form-status" style="margin-top: 15px; font-weight: 500;"></div>
+          </form>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <p>&copy; 2025 Chhinchea Voreak.</p>
-        <div class="social-links">
-          <a
-            style="text-decoration: none"
-            href="https://github.com/voreakchhinchea23"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a href="https://www.linkedin.com/in/voreak-chhinchea/"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a
-            style="text-decoration: none"
-            target="_blank"
-            href="https://mail.google.com/mail/?view=cm&to=cc.voreak@gmail.com"
-            ><i class="fas fa-envelope"></i
-          ></a>
-        </div>
+      <!-- Footer -->
+      <footer>
+        <p>&copy; 2026 Chhinchea Voreak. Built with vanilla HTML/CSS/JS and inspired by Magic UI.</p>
+      </footer>
+
+    </main>
+
+    <!-- Bottom Floating Dock -->
+    <div class="dock-wrapper" id="dock">
+      <div class="dock-container">
+        <a href="#home" class="dock-item">
+          <i class="fas fa-home"></i>
+          <span class="dock-tooltip">Home</span>
+        </a>
+        <a href="#about" class="dock-item">
+          <i class="fas fa-user"></i>
+          <span class="dock-tooltip">About</span>
+        </a>
+        <a href="#work" class="dock-item">
+          <i class="fas fa-briefcase"></i>
+          <span class="dock-tooltip">Experience</span>
+        </a>
+        <a href="#education" class="dock-item">
+          <i class="fas fa-graduation-cap"></i>
+          <span class="dock-tooltip">Education</span>
+        </a>
+        <a href="#projects" class="dock-item">
+          <i class="fas fa-code"></i>
+          <span class="dock-tooltip">Projects</span>
+        </a>
+        <a href="#contact" class="dock-item">
+          <i class="fas fa-envelope"></i>
+          <span class="dock-tooltip">Contact</span>
+        </a>
+        <div class="dock-separator"></div>
+        <a href="https://github.com/voreakchhinchea23" target="_blank" class="dock-item">
+          <i class="fab fa-github"></i>
+          <span class="dock-tooltip">GitHub</span>
+        </a>
+        <a href="https://www.linkedin.com/in/voreak-chhinchea/" target="_blank" class="dock-item">
+          <i class="fab fa-linkedin"></i>
+          <span class="dock-tooltip">LinkedIn</span>
+        </a>
+        <a href="https://mail.google.com/mail/?view=cm&to=cc.voreak@gmail.com" target="_blank" class="dock-item">
+          <i class="fas fa-envelope-open-text"></i>
+          <span class="dock-tooltip">Email Direct</span>
+        </a>
+        <div class="dock-separator"></div>
+        <button id="theme-toggle" class="dock-item" aria-label="Toggle Theme">
+          <i class="fas fa-moon" id="theme-icon"></i>
+          <span class="dock-tooltip">Theme</span>
+        </button>
       </div>
-    </footer>
+    </div>
+
+    <!-- EmailJS & Main Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
