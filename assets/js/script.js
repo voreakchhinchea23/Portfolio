@@ -156,6 +156,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- HERO NAME INTERACTIVE GREETING ANIMATION ---
+  const heroName = document.getElementById("heroName");
+  if (heroName) {
+    // Initial friendly greeting pop
+    setTimeout(() => {
+      heroName.classList.add("animate-pop");
+      setTimeout(() => heroName.classList.remove("animate-pop"), 800);
+    }, 600);
+
+    // On-click / on-tap trigger
+    heroName.addEventListener("click", () => {
+      heroName.classList.remove("animate-pop");
+      void heroName.offsetWidth; // Force reflow to restart animation
+      heroName.classList.add("animate-pop");
+      setTimeout(() => heroName.classList.remove("animate-pop"), 800);
+    });
+  }
+
   // --- THEME TOGGLE (Dark / Light / Liquid Glass) ---
   const themeToggleBtn = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
@@ -197,8 +215,8 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("theme", themeName);
   };
 
-  // Load saved theme or default to dark mode
-  const savedTheme = localStorage.getItem("theme") || "dark";
+  // Load saved theme or default to liquid glass mode
+  const savedTheme = localStorage.getItem("theme") || "glass";
   applyTheme(savedTheme);
 
   themeToggleBtn?.addEventListener("click", () => {
