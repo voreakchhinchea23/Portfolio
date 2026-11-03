@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Outer Tech Squircle Frame with Obsidian Slate Fill and Cyan Border -->
+  <rect x="24" y="24" width="464" height="464" rx="120" fill="#090d16" stroke="#0284c7" stroke-width="14" />
+  
+  <!-- Subtle Inset Specular Accent Line (Glass/Tech Depth) -->
+  <rect x="36" y="36" width="440" height="440" rx="108" fill="none" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2" />
+
+  <!-- Letter C: Vibrant Electric Cyan Terminal Arc -->
+  <path d="M 200 154 L 152 154 C 116 154 96 178 96 218 L 96 294 C 96 334 116 358 152 358 L 200 358" 
+        fill="none" stroke="#38bdf8" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Letter V: Sharp Symmetrical Pure White Chevron -->
+  <path d="M 280 154 L 350 358 L 420 154" 
+        fill="none" stroke="#ffffff" stroke-width="44" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

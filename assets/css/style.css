@@ -803,6 +803,99 @@ body.glass .skill-popover::after {
   margin-bottom: 4px;
 }
 
+/* Timeline Certifications */
+.timeline-cert-item .timeline-logo {
+  color: var(--primary);
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.timeline-cert-item:hover .timeline-logo {
+  transform: scale(1.05);
+}
+
+.cert-meta-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cert-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background-color: var(--secondary);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.cert-btn:hover {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+}
+
+.cert-btn i {
+  font-size: 12px;
+  color: var(--primary);
+  transition: color 0.2s;
+}
+
+.cert-btn:hover i {
+  color: var(--primary-foreground);
+}
+
+.cert-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  background-color: var(--secondary);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+}
+
+body.dark .cert-btn {
+  background-color: #1e2230;
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+}
+
+body.dark .cert-btn:hover {
+  background-color: #38bdf8;
+  color: #020617;
+  border-color: #38bdf8;
+  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.35);
+}
+
+body.dark .cert-btn i {
+  color: #38bdf8;
+}
+
+body.dark .cert-btn:hover i {
+  color: #020617;
+}
+
+body.dark .cert-status-badge {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+}
+
 /* Projects grid */
 .projects-grid {
   display: grid;
@@ -1198,6 +1291,12 @@ footer {
     font-size: 12px;
   }
 
+  .cert-meta-wrap {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+
   .dock-container {
     gap: 4px;
     padding: 6px 8px;
@@ -1380,8 +1479,31 @@ footer {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lightbox-verify-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background-color: #0284c7;
+  color: #ffffff !important;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.lightbox-verify-btn:hover {
+  background-color: #0369a1;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 768px) {
@@ -1473,6 +1595,37 @@ body.glass .timeline-item:hover .timeline-logo {
 body.glass .timeline-details {
   border-left-color: rgba(2, 132, 199, 0.35);
   color: #334155;
+}
+
+/* Glass Certifications */
+body.glass .cert-btn {
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  color: #0369a1;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05), inset 0 1px 1px #ffffff;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+body.glass .cert-btn:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.3);
+}
+
+body.glass .cert-btn i {
+  color: #0284c7;
+}
+
+body.glass .cert-btn:hover i {
+  color: #ffffff;
+}
+
+body.glass .cert-status-badge {
+  background-color: rgba(255, 255, 255, 0.65);
+  border-color: rgba(255, 255, 255, 0.85);
+  color: #475569;
 }
 
 /* Glass Skills */

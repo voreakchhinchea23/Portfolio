@@ -50,6 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
     title.addEventListener("click", () => {
       const item = title.closest(".timeline-item");
       if (item) {
+        if (item.classList.contains("timeline-cert-item")) {
+          const certBtn = item.querySelector(".cert-btn");
+          if (certBtn) certBtn.click();
+          return;
+        }
         // Toggle this item
         item.classList.toggle("expanded");
         
@@ -248,12 +253,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxBackdrop = lightbox?.querySelector(".lightbox-backdrop");
 
   if (lightbox && lightboxImg) {
-    const openLightbox = (src, alt, title) => {
+    const openLightbox = (src, alt, title, verifyUrl) => {
       lightboxImg.src = src;
-      lightboxImg.alt = alt || title || "Project Screenshot Preview";
+      lightboxImg.alt = alt || title || "Preview";
       if (lightboxCaption) {
-        lightboxCaption.textContent = title || alt || "";
-        lightboxCaption.style.display = (title || alt) ? "block" : "none";
+        if (verifyUrl) {
+          lightboxCaption.innerHTML = `
+            <span class="lightbox-caption-text">${title || alt || ""}</span>
+            <a href="${verifyUrl}" target="_blank" rel="noopener noreferrer" class="lightbox-verify-btn">
+              <i class="fas fa-external-link-alt"></i> Verify Credential
+            </a>
+          `;
+          lightboxCaption.style.display = "flex";
+        } else if (title || alt) {
+          lightboxCaption.textContent = title || alt || "";
+          lightboxCaption.style.display = "block";
+        } else {
+          lightboxCaption.style.display = "none";
+        }
       }
       lightbox.classList.add("active");
       lightbox.setAttribute("aria-hidden", "false");
@@ -268,10 +285,12 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         if (!lightbox.classList.contains("active")) {
           lightboxImg.src = "";
+          if (lightboxCaption) lightboxCaption.innerHTML = "";
         }
       }, 300);
     };
 
+    // Project image triggers
     document.querySelectorAll(".project-img-link").forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault(); // Stop jumping to top of the page
@@ -285,6 +304,34 @@ document.addEventListener("DOMContentLoaded", () => {
           openLightbox(src, alt, cardTitle);
         }
       });
+    });
+
+    // Certificate popup button triggers
+    document.querySelectorAll(".cert-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const src = btn.getAttribute("data-cert-src");
+        const title = btn.getAttribute("data-cert-title");
+        const verifyUrl = btn.getAttribute("data-cert-url");
+        if (src) {
+          openLightbox(src, title, title, verifyUrl);
+        }
+      });
+    });
+
+    // Clicking certificate timeline logo also triggers popup
+    document.querySelectorAll(".timeline-cert-item").forEach((item) => {
+      const btn = item.querySelector(".cert-btn");
+      if (!btn) return;
+      const logo = item.querySelector(".timeline-logo");
+      if (logo) {
+        logo.style.cursor = "pointer";
+        logo.setAttribute("title", "Click to view certificate");
+        logo.addEventListener("click", () => {
+          btn.click();
+        });
+      }
     });
 
     lightboxClose?.addEventListener("click", closeLightbox);

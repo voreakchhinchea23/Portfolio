@@ -22,6 +22,10 @@ A responsive, modern personal portfolio website built with vanilla HTML, CSS, an
   - Expandable timeline entries for professional roles, internships, and educational milestones.
   - Interactive card expansion with accessible keyboard navigation support.
 
+- **Professional Certifications & Credential Lightbox**:
+  - Accredited certification timeline featuring course hour breakdowns and completion dates.
+  - Interactive credential preview buttons opening high-resolution certificate modals with direct external verification links.
+
 - **Project Showcase & Image Lightbox**:
   - Grid presentation of software projects including tech stacks, descriptions, and code repository links.
   - Full-resolution screenshot preview lightbox with backdrop blur, image captions, and multiple closing options (close button, backdrop click, Escape key).
@@ -56,7 +60,8 @@ Portfolio/
     ├── js/
     │   └── script.js           # Theme switching, animations, lightbox, EmailJS handler
     └── img/
-        ├── icon/               # Favicon and document icons
+        ├── certificates/       # High-resolution course certification images
+        ├── icon/               # Custom vector SVG, favicon, and app icons
         ├── projects/           # Screenshots of software projects
         ├── profile.png         # Default cutout profile picture
         ├── profile-2.png       # Fallback profile picture
