@@ -101,44 +101,106 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // --- PROFILE TECHNOLOGY ORBIT (touch support) ---
+  // --- PROFILE TECHNOLOGY ORBIT & GLITCH AVATAR (hover & touch support) ---
   const profileOrbit = document.getElementById("profileOrbit");
-  profileOrbit?.addEventListener("click", () => {
-    profileOrbit.classList.toggle("orbit-active");
-  });
+  const avatarFrame = profileOrbit?.querySelector(".avatar-frame");
+  let reverseTimer = null;
 
-  profileOrbit?.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
+  if (profileOrbit && avatarFrame) {
+    const triggerReverseGlitch = () => {
+      avatarFrame.classList.remove("glitch-reverse");
+      void avatarFrame.offsetWidth; // Force reflow so animation triggers cleanly
+      avatarFrame.classList.add("glitch-reverse");
+      clearTimeout(reverseTimer);
+      reverseTimer = setTimeout(() => {
+        avatarFrame.classList.remove("glitch-reverse");
+      }, 700);
+    };
+
+    profileOrbit.addEventListener("mouseenter", () => {
+      clearTimeout(reverseTimer);
+      avatarFrame.classList.remove("glitch-reverse");
+    });
+
+    profileOrbit.addEventListener("mouseleave", () => {
+      triggerReverseGlitch();
+    });
+
+    avatarFrame.addEventListener("animationend", (e) => {
+      if (e.target === avatarFrame && avatarFrame.classList.contains("glitch-reverse")) {
+        avatarFrame.classList.remove("glitch-reverse");
+      }
+    });
+
+    profileOrbit.addEventListener("click", () => {
+      const wasActive = profileOrbit.classList.contains("orbit-active");
       profileOrbit.classList.toggle("orbit-active");
-    }
-  });
+      if (wasActive) {
+        triggerReverseGlitch();
+      } else {
+        clearTimeout(reverseTimer);
+        avatarFrame.classList.remove("glitch-reverse");
+      }
+    });
 
-  // --- THEME TOGGLE (Light / Dark) ---
-  const themeToggleBtn = document.getElementById("theme-toggle");
-  const themeIcon = document.getElementById("theme-icon");
-
-  // Load saved theme or default to dark mode (popular developer style)
-  const savedTheme = localStorage.getItem("theme") || "dark";
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark");
-    themeIcon.className = "fas fa-sun"; // Sun icon to switch to light
-  } else {
-    document.body.classList.remove("dark");
-    themeIcon.className = "fas fa-moon"; // Moon icon to switch to dark
+    profileOrbit.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        profileOrbit.click();
+      }
+    });
   }
 
+  // --- THEME TOGGLE (Dark / Light / Liquid Glass) ---
+  const themeToggleBtn = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+  const themeTooltip = document.getElementById("theme-tooltip");
+
+  const themes = ["dark", "light", "glass"];
+
+  const themeConfig = {
+    dark: {
+      icon: "fas fa-moon",
+      name: "Theme: Dark",
+      apply: () => {
+        document.body.classList.remove("glass");
+        document.body.classList.add("dark");
+      },
+    },
+    light: {
+      icon: "fas fa-sun",
+      name: "Theme: Light",
+      apply: () => {
+        document.body.classList.remove("dark", "glass");
+      },
+    },
+    glass: {
+      icon: "fas fa-droplet",
+      name: "Theme: Liquid Glass",
+      apply: () => {
+        document.body.classList.remove("dark");
+        document.body.classList.add("glass");
+      },
+    },
+  };
+
+  const applyTheme = (themeName) => {
+    const config = themeConfig[themeName] || themeConfig.dark;
+    config.apply();
+    if (themeIcon) themeIcon.className = config.icon;
+    if (themeTooltip) themeTooltip.textContent = config.name;
+    localStorage.setItem("theme", themeName);
+  };
+
+  // Load saved theme or default to dark mode
+  const savedTheme = localStorage.getItem("theme") || "dark";
+  applyTheme(savedTheme);
+
   themeToggleBtn?.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    const isDark = document.body.classList.contains("dark");
-    
-    if (isDark) {
-      localStorage.setItem("theme", "dark");
-      themeIcon.className = "fas fa-sun";
-    } else {
-      localStorage.setItem("theme", "light");
-      themeIcon.className = "fas fa-moon";
-    }
+    const currentTheme = localStorage.getItem("theme") || "dark";
+    const currentIndex = themes.indexOf(currentTheme);
+    const nextTheme = themes[(currentIndex + 1) % themes.length];
+    applyTheme(nextTheme);
   });
 
   // --- EMAILJS CONTACT FORM ---
@@ -175,6 +237,63 @@ document.addEventListener("DOMContentLoaded", () => {
         statusDiv.style.color = "red";
         submitBtn.disabled = false;
       });
+    });
+  }
+
+  // --- PROJECT IMAGE LIGHTBOX POPUP ---
+  const lightbox = document.getElementById("imageLightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxCaption = document.getElementById("lightboxCaption");
+  const lightboxClose = document.getElementById("lightboxClose");
+  const lightboxBackdrop = lightbox?.querySelector(".lightbox-backdrop");
+
+  if (lightbox && lightboxImg) {
+    const openLightbox = (src, alt, title) => {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || title || "Project Screenshot Preview";
+      if (lightboxCaption) {
+        lightboxCaption.textContent = title || alt || "";
+        lightboxCaption.style.display = (title || alt) ? "block" : "none";
+      }
+      lightbox.classList.add("active");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden"; // Prevent background scroll
+      lightboxClose?.focus();
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("active");
+      lightbox.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      setTimeout(() => {
+        if (!lightbox.classList.contains("active")) {
+          lightboxImg.src = "";
+        }
+      }, 300);
+    };
+
+    document.querySelectorAll(".project-img-link").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault(); // Stop jumping to top of the page
+        const img = link.querySelector("img");
+        const cardTitle = link.closest(".project-card")?.querySelector(".project-card-title")?.textContent.trim();
+        const src = link.getAttribute("href") && link.getAttribute("href") !== "#"
+          ? link.getAttribute("href")
+          : img?.getAttribute("src");
+        const alt = img?.getAttribute("alt");
+        if (src) {
+          openLightbox(src, alt, cardTitle);
+        }
+      });
+    });
+
+    lightboxClose?.addEventListener("click", closeLightbox);
+    lightboxBackdrop?.addEventListener("click", closeLightbox);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.classList.contains("active")) {
+        closeLightbox();
+      }
     });
   }
 });

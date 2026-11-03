@@ -37,12 +37,23 @@
             </p>
           </div>
           <div class="avatar-wrapper" id="profileOrbit" tabindex="0" aria-label="Voreak's technology skills. Hover or tap to animate.">
-            <img
-              class="avatar-image"
-              src="assets/img/profile.png"
-              alt="Chhinchea Voreak"
-              onerror="this.src='assets/img/profile-2.png'"
-            />
+            <div class="avatar-frame">
+              <img
+                class="avatar-image avatar-default"
+                src="assets/img/profile.png"
+                alt="Chhinchea Voreak"
+                onerror="this.src='assets/img/profile-2.png'"
+              />
+              <img
+                class="avatar-image avatar-hover"
+                src="assets/img/profile-hover.png"
+                alt=""
+                aria-hidden="true"
+              />
+              <div class="glitch-layer glitch-cyan" aria-hidden="true"></div>
+              <div class="glitch-layer glitch-red" aria-hidden="true"></div>
+              <div class="glitch-scanline" aria-hidden="true"></div>
+            </div>
             <div class="avatar-orbit" aria-hidden="true">
               <span class="orbit-icon" style="--i: 0; --brand: #9b4fdb" title="C#"><i class="fas fa-hashtag"></i></span>
               <span class="orbit-icon" style="--i: 1; --brand: #512bd4" title="ASP.NET Core"><i class="fas fa-layer-group"></i></span>
@@ -276,12 +287,13 @@
           
           <!-- Project 1 -->
           <div class="project-card">
-            <a href="#" class="project-img-link">
+            <a href="assets/img/projects/ninecafemangementsystem.png" class="project-img-link" title="Click to preview Nine Cafe Management screenshot">
               <img
                 src="assets/img/projects/ninecafemangementsystem.png"
                 alt="Nine Cafe Management System"
                 class="project-card-img"
               />
+              <span class="project-img-zoom-badge" aria-hidden="true"><i class="fas fa-search-plus"></i></span>
             </a>
             <div class="project-card-body">
               <h3 class="project-card-title">Nine Cafe Management</h3>
@@ -306,12 +318,13 @@
 
           <!-- Project 2 -->
           <div class="project-card">
-            <a href="#" class="project-img-link">
+            <a href="assets/img/projects/ninecafeproduct.png" class="project-img-link" title="Click to preview Nine Cafe Products screenshot">
               <img
                 src="assets/img/projects/ninecafeproduct.png"
                 alt="Nine Cafe Products"
                 class="project-card-img"
               />
+              <span class="project-img-zoom-badge" aria-hidden="true"><i class="fas fa-search-plus"></i></span>
             </a>
             <div class="project-card-body">
               <h3 class="project-card-title">Nine Cafe Products</h3>
@@ -335,12 +348,13 @@
 
           <!-- Project 3 -->
           <div class="project-card">
-            <a href="#" class="project-img-link">
+            <a href="assets/img/projects/videogameApi.png" class="project-img-link" title="Click to preview Video Games API screenshot">
               <img
                 src="assets/img/projects/videogameApi.png"
                 alt="Video Games API"
                 class="project-card-img"
               />
+              <span class="project-img-zoom-badge" aria-hidden="true"><i class="fas fa-search-plus"></i></span>
             </a>
             <div class="project-card-body">
               <h3 class="project-card-title">Video Games API</h3>
@@ -371,7 +385,7 @@
           <span class="section-badge">Get In Touch</span>
           <h2 class="section-header-title">Let's Connect</h2>
           <p class="section-header-desc mx-auto">
-            Have a question, an opportunity, or just want to say hi? Send me a message below or email me directly at <a href="mailto:cc.voreak@email.com" class="text-underline">cc.voreak@email.com</a>.
+            Have a question, an opportunity, or just want to say hi? Send me a message below or email me directly at <a href="mailto:voreak.chhinchea@gmail.com" class="text-underline">voreak.chhinchea@gmail.com</a>.
           </p>
         </div>
         
@@ -465,15 +479,29 @@
           <i class="fab fa-linkedin"></i>
           <span class="dock-tooltip">LinkedIn</span>
         </a>
-        <a href="https://mail.google.com/mail/?view=cm&to=cc.voreak@gmail.com" target="_blank" class="dock-item">
+        <a href="https://mail.google.com/mail/?view=cm&to=voreak.chhinchea@gmail.com" target="_blank" class="dock-item">
           <i class="fas fa-envelope-open-text"></i>
           <span class="dock-tooltip">Email Direct</span>
         </a>
         <div class="dock-separator"></div>
         <button id="theme-toggle" class="dock-item" aria-label="Toggle Theme">
           <i class="fas fa-moon" id="theme-icon"></i>
-          <span class="dock-tooltip">Theme</span>
+          <span class="dock-tooltip" id="theme-tooltip">Theme: Dark</span>
         </button>
+      </div>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div id="imageLightbox" class="image-lightbox" role="dialog" aria-modal="true" aria-hidden="true" tabindex="-1">
+      <div class="lightbox-backdrop"></div>
+      <div class="lightbox-dialog">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close image preview">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content">
+          <img id="lightboxImg" src="" alt="" class="lightbox-image" />
+          <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
       </div>
     </div>
 
