@@ -38,24 +38,6 @@ body.dark {
   --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.5), 0 4px 6px -4px rgba(0,0,0,0.5);
 }
 
-body.glass {
-  --background: #060919;
-  --foreground: #f8fafc;
-  --card: rgba(255, 255, 255, 0.04);
-  --card-foreground: #f8fafc;
-  --primary: #38bdf8;
-  --primary-foreground: #020617;
-  --secondary: rgba(255, 255, 255, 0.07);
-  --secondary-foreground: #f8fafc;
-  --muted: rgba(255, 255, 255, 0.06);
-  --muted-foreground: #94a3b8;
-  --accent: rgba(56, 189, 248, 0.15);
-  --accent-foreground: #38bdf8;
-  --border: rgba(255, 255, 255, 0.12);
-  --ring: #38bdf8;
-  --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
-  --shadow-lg: 0 16px 45px -4px rgba(0, 0, 0, 0.65), 0 0 25px 0 rgba(56, 189, 248, 0.18);
-}
 
 * {
   box-sizing: border-box;
@@ -82,6 +64,22 @@ a {
 a:hover {
   color: var(--primary);
   text-decoration: underline;
+}
+
+/* Ambient Floating Micro-Dots Background */
+.bg-dots-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
 }
 
 /* Sections */
@@ -779,19 +777,6 @@ body.dark .skill-popover::after {
   border-color: rgba(255, 255, 255, 0.22);
 }
 
-body.glass .skill-popover {
-  background-color: rgba(10, 15, 30, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-}
-
-body.glass .skill-popover::after {
-  background-color: rgba(10, 15, 30, 0.95);
-  border-right-color: rgba(255, 255, 255, 0.2);
-  border-bottom-color: rgba(255, 255, 255, 0.2);
-}
 
 .skill-pill:hover .skill-popover,
 .skill-pill:focus-visible .skill-popover,
@@ -1173,67 +1158,168 @@ body.dark .cert-status-badge {
   color: var(--foreground);
 }
 
-/* Contact form */
-.contact-wrapper {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 24px;
-  background-color: var(--background);
+/* Contact Channels Grid */
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 840px;
+  margin: 0 auto;
 }
 
-.contact-form .form-group {
+.contact-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.85);
+}
+
+.contact-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09), inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  border-color: var(--ring);
+}
+
+.contact-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.contact-card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.contact-card:hover .contact-card-icon {
+  transform: scale(1.08);
+}
+
+.contact-card-icon.email-icon {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.contact-card-icon.telegram-icon {
+  background-color: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.contact-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card-type {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted-foreground);
+}
+
+.contact-card-title {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--foreground);
+  letter-spacing: -0.01em;
+}
+
+.contact-card-desc {
+  font-size: 14px;
+  color: var(--muted-foreground);
+  line-height: 1.5;
   margin-bottom: 16px;
 }
 
-.contact-form label {
-  display: block;
-  font-size: 15px;
-  font-weight: 600;
-  margin-bottom: 6px;
-}
-
-.contact-form .form-control {
-  width: 100%;
-  padding: 10px 12px;
-  font-size: 16px;
-  border-radius: 8px;
+.contact-card-value {
+  background-color: var(--secondary);
   border: 1px solid var(--border);
-  background-color: var(--background);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 18px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
   color: var(--foreground);
-  font-family: inherit;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  word-break: break-all;
+  user-select: all;
 }
 
-.contact-form .form-control:focus {
-  outline: none;
-  border-color: var(--ring);
-  box-shadow: 0 0 0 2px var(--border);
+.contact-card-value code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
 }
 
-.btn-submit {
-  width: 100%;
+.contact-card-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.contact-action-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 10px 16px;
-  font-size: 16px;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 13px;
   font-weight: 600;
-  background-color: var(--primary);
-  color: var(--primary-foreground);
   border-radius: 8px;
-  border: none;
+  text-decoration: none !important;
+  font-family: inherit;
+  line-height: 1.4;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  transition: opacity 0.2s;
 }
 
-.btn-submit:hover {
-  opacity: 0.9;
+.contact-action-btn.primary {
+  flex: 1 1 auto;
+  background-color: var(--primary);
+  color: var(--primary-foreground) !important;
+  border: 1px solid var(--primary);
 }
 
-.btn-submit:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.contact-action-btn.primary:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.contact-action-btn.secondary {
+  background-color: var(--background);
+  color: var(--foreground) !important;
+  border: 1px solid var(--border);
+}
+
+.contact-action-btn.secondary:hover {
+  background-color: var(--secondary);
+  border-color: var(--ring);
+  transform: translateY(-1px);
+}
+
+.contact-action-btn.copied {
+  background-color: #10b981 !important;
+  border-color: #10b981 !important;
+  color: #ffffff !important;
 }
 
 /* Bottom Floating Dock */
@@ -1399,6 +1485,11 @@ footer {
     grid-template-columns: 1fr;
     gap: 16px;
   }
+
+  .contact-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
   
   .timeline-header {
     flex-direction: column;
@@ -1462,7 +1553,7 @@ footer {
     height: 38px;
   }
 
-  .contact-wrapper {
+  .contact-card {
     padding: 18px;
   }
 
@@ -1637,378 +1728,203 @@ footer {
 }
 
 /* ==========================================================================
-   Liquid Glass Theme Specifics (Dark Liquid Glass Inspired by Dribbble)
+   Subtle Liquid Glass Effects (Applied to Both Light and Dark Themes)
    ========================================================================== */
-body.glass {
-  background-color: #060919;
-  color: #f8fafc;
+
+/* -- Light Theme Glass Touches -- */
+
+/* Light: Project Cards with frosted glass */
+.project-card {
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06), inset 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
-/* Ensure main content layers above ambient glow */
-main {
-  position: relative;
-  z-index: 1;
+.project-card:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
-/* Ambient Optical Refraction Glow Orbs */
-.glass-ambient-container {
-  display: none;
+/* Light: Skills category cards */
+.skills-category-card {
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.85);
 }
 
-body.glass .glass-ambient-container {
-  display: block;
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+.skills-category-card:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
-body.glass .glass-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(140px);
-  pointer-events: none;
-  will-change: transform;
+/* Light: Skill pills */
+.skill-pill {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.7);
 }
 
-body.glass .glass-orb-1 {
-  width: 580px;
-  height: 580px;
-  background-color: #0284c7;
-  top: 5%;
-  left: 20%;
-  opacity: 0.18;
+.skill-pill:hover,
+.skill-pill:focus-visible,
+.skill-pill.is-active {
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.85);
 }
 
-body.glass .glass-orb-2 {
-  width: 520px;
-  height: 520px;
-  background-color: #2563eb;
-  top: 42%;
-  right: 12%;
-  opacity: 0.16;
+/* Light: Dock with frosted glass */
+.dock-container {
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
-body.glass .glass-orb-3 {
-  width: 600px;
-  height: 600px;
-  background-color: #0ea5e9;
-  bottom: 8%;
-  left: 8%;
-  opacity: 0.15;
+/* -- Dark Theme Glass Touches -- */
+
+/* Dark: Project Cards with frosted glass */
+body.dark .project-card {
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.12);
 }
 
-/* Glass Hero Typography & Headings */
-body.glass .hero-title {
-  color: #ffffff;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
-}
-
-body.glass .hero-subtitle {
-  color: #38bdf8;
-}
-
-body.glass .hero-description {
-  color: #94a3b8;
-}
-
-body.glass .heading-2,
-body.glass .section-header-title {
-  color: #ffffff;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
-}
-
-body.glass .section-header-desc,
-body.glass .prose {
-  color: #94a3b8;
-}
-
-body.glass .footer-text {
-  color: #64748b;
-}
-
-/* Glass Project Cards */
-body.glass .project-card {
-  background-color: rgba(255, 255, 255, 0.045);
-  backdrop-filter: blur(28px) saturate(210%);
-  -webkit-backdrop-filter: blur(28px) saturate(210%);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55),
-              inset 0 1px 1px 0 rgba(255, 255, 255, 0.28),
-              inset 0 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-body.glass .project-card:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(56, 189, 248, 0.5);
-  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.65), 
-              0 0 28px rgba(56, 189, 248, 0.2), 
-              inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.45);
-  transform: translateY(-4px);
-}
-
-body.glass .project-title {
-  color: #ffffff;
-}
-
-body.glass .project-description {
-  color: #94a3b8;
-}
-
-body.glass .project-tag {
+body.dark .project-card:hover {
   background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #38bdf8;
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+}
+
+/* Dark: Skills category cards */
+body.dark .skills-category-card {
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+body.dark .skills-category-card:hover {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+}
+
+/* Dark: Skill pills */
+body.dark .skill-pill {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-}
-
-body.glass .project-link-btn {
-  background-color: #0284c7;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
-}
-
-body.glass .project-link-btn:hover {
-  background-color: #0369a1;
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.5), inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
-}
-
-/* Glass Timeline */
-body.glass .timeline-title {
-  color: #ffffff;
-}
-
-body.glass .timeline-company,
-body.glass .timeline-university {
-  color: #38bdf8;
-}
-
-body.glass .timeline-date {
-  color: #64748b;
-}
-
-body.glass .timeline-details {
-  border-left-color: rgba(56, 189, 248, 0.35);
-  color: #94a3b8;
-}
-
-body.glass .timeline-logo {
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-  color: #38bdf8;
-}
-
-body.glass .timeline-item:hover .timeline-logo {
-  background-color: #0284c7;
-  border-color: #38bdf8;
-  color: #ffffff;
-  box-shadow: 0 0 18px rgba(56, 189, 248, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
-}
-
-/* Glass Certifications */
-body.glass .cert-btn {
-  background-color: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #38bdf8;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-body.glass .cert-btn:hover {
-  background-color: #0284c7;
-  color: #ffffff;
-  border-color: #38bdf8;
-  box-shadow: 0 6px 20px rgba(56, 189, 248, 0.4), inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
-}
-
-body.glass .cert-btn i {
-  color: #38bdf8;
-}
-
-body.glass .cert-btn:hover i {
-  color: #ffffff;
-}
-
-body.glass .cert-status-badge {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.12);
-  color: #94a3b8;
-}
-
-/* Glass Skills */
-body.glass .skills-category-card {
-  background-color: rgba(255, 255, 255, 0.045);
-  backdrop-filter: blur(28px) saturate(210%);
-  -webkit-backdrop-filter: blur(28px) saturate(210%);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28), inset 0 0 1px 0 rgba(255, 255, 255, 0.15);
-}
-
-body.glass .skills-category-card:hover {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(56, 189, 248, 0.45);
-  box-shadow: 0 22px 50px rgba(0, 0, 0, 0.65), 0 0 24px rgba(56, 189, 248, 0.18), inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.4);
-  transform: translateY(-3px);
-}
-
-body.glass .skills-category-header {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
-body.glass .skills-category-icon {
-  background-color: rgba(56, 189, 248, 0.15);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.3);
-}
-
-body.glass .skills-category-title {
-  color: #ffffff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-}
-
-body.glass .skill-pill {
-  background-color: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.08);
   color: #e2e8f0;
 }
 
-body.glass .skill-pill:hover,
-body.glass .skill-pill:focus-visible,
-body.glass .skill-pill.is-active {
-  background-color: rgba(56, 189, 248, 0.18);
-  border-color: #38bdf8;
-  color: #ffffff;
-  box-shadow: 0 4px 16px rgba(56, 189, 248, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-  transform: translateY(-2px);
+body.dark .skill-pill:hover,
+body.dark .skill-pill:focus-visible,
+body.dark .skill-pill.is-active {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
-/* Glass Section Badges */
-body.glass .section-badge {
-  background-color: rgba(56, 189, 248, 0.12);
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  color: #38bdf8;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-/* Glass Contact Form */
-body.glass .contact-wrapper {
-  background-color: rgba(255, 255, 255, 0.045);
-  backdrop-filter: blur(28px) saturate(210%);
-  -webkit-backdrop-filter: blur(28px) saturate(210%);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55), inset 0 1px 1px 0 rgba(255, 255, 255, 0.28);
-}
-
-body.glass .contact-form .form-control {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  color: #ffffff;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-body.glass .contact-form .form-control:focus {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-}
-
-body.glass .btn-submit {
-  background-color: #0284c7;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: #ffffff;
-  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.3);
-}
-
-body.glass .btn-submit:hover {
-  background-color: #0369a1;
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(2, 132, 199, 0.5), inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
-}
-
-/* Glass Dock */
-body.glass .dock-container {
-  background: rgba(10, 15, 30, 0.72);
-  backdrop-filter: blur(32px) saturate(220%);
-  -webkit-backdrop-filter: blur(32px) saturate(220%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65), 
-              inset 0 1px 1.5px rgba(255, 255, 255, 0.4), 
-              0 0 24px rgba(56, 189, 248, 0.18);
-}
-
-body.glass .dock-item {
-  color: #cbd5e1;
-}
-
-body.glass .dock-item:hover {
-  background-color: rgba(56, 189, 248, 0.18);
-  color: #38bdf8;
-  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 0 14px rgba(56, 189, 248, 0.3);
-}
-
-body.glass .dock-separator {
-  background-color: rgba(255, 255, 255, 0.15);
-}
-
-body.glass .dock-tooltip {
-  background: rgba(10, 15, 30, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  color: #f8fafc;
-}
-
-/* Glass Avatar Frame */
-body.glass .avatar-frame {
-  background-color: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 
-              inset 0 1px 2px rgba(255, 255, 255, 0.35), 
-              0 0 24px rgba(56, 189, 248, 0.18);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-body.glass .orbit-icon {
-  background: rgba(15, 23, 42, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #38bdf8;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-}
-
-body.glass .project-img-zoom-badge {
-  background: rgba(10, 15, 30, 0.85);
-  color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
-}
-
-/* Glass Lightbox Modal */
-body.glass .cert-lightbox-modal {
-  background-color: rgba(4, 7, 18, 0.88);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-}
-
-body.glass .lightbox-frame {
+/* Dark: Contact Cards */
+body.dark .contact-card {
   background-color: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), inset 0 1px 1.5px rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+body.dark .contact-card:hover {
+  background-color: rgba(255, 255, 255, 0.065);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.18);
+}
+
+body.dark .contact-card-icon.email-icon {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+body.dark .contact-card-icon.telegram-icon {
+  background-color: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+body.dark .contact-card-value {
+  background-color: rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+}
+
+body.dark .contact-action-btn.secondary {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: #f1f5f9 !important;
+}
+
+body.dark .contact-action-btn.secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Dark: Dock with frosted glass */
+body.dark .dock-container {
+  background: rgba(12, 12, 14, 0.72);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Dark: Timeline logo */
+body.dark .timeline-logo {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Dark: Avatar frame */
+body.dark .avatar-frame {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+body.dark .orbit-icon {
+  background: rgba(15, 15, 20, 0.8);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+/* ==========================================================================
+   Mouse Pointer Trailing Line & Dots Canvas
+   ========================================================================== */
+.cursor-trail-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-trail-canvas {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-trail-canvas {
+    display: none !important;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

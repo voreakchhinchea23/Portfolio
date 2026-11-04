@@ -30,9 +30,9 @@ A responsive, modern personal portfolio website built with vanilla HTML, CSS, an
   - Grid presentation of software projects including tech stacks, descriptions, and code repository links.
   - Full-resolution screenshot preview lightbox with backdrop blur, image captions, and multiple closing options (close button, backdrop click, Escape key).
 
-- **Direct Contact Integration**:
-  - Integrated contact form powered by EmailJS for direct client-side email delivery.
-  - Direct mail and professional profile links in the navigation dock.
+- **Direct Contact Channels**:
+  - Interactive direct contact cards for Gmail and Telegram with one-click copy and direct launch actions.
+  - Quick-access social and messaging links integrated directly in the floating bottom dock.
 
 - **Floating Navigation Dock**:
   - Fixed-position floating dock inspired by modern operating system docks.
@@ -46,7 +46,6 @@ A responsive, modern personal portfolio website built with vanilla HTML, CSS, an
 - **Libraries & Assets**:
   - Bootstrap 5 (Grid and utility classes)
   - FontAwesome 6 (Vector iconography)
-  - EmailJS (Client-side form processing)
 
 ## Project Structure
 
@@ -100,6 +99,7 @@ A modern web browser such as Google Chrome, Mozilla Firefox, Microsoft Edge, or 
 ## Contact & Links
 
 - **Email**: voreak.chhinchea@gmail.com
+- **Telegram**: [@chhinchea_voreak](https://t.me/chhinchea_voreak)
 - **GitHub**: [github.com/voreakchhinchea23](https://github.com/voreakchhinchea23)
 - **LinkedIn**: [linkedin.com/in/voreak-chhinchea](https://www.linkedin.com/in/voreak-chhinchea/)
 

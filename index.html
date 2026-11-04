@@ -24,13 +24,12 @@
     <!-- Custom Style -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
-  <body class="glass">
-    <!-- Ambient Optical Refraction Glow Orbs for Liquid Glass Theme -->
-    <div class="glass-ambient-container" aria-hidden="true">
-      <div class="glass-orb glass-orb-1"></div>
-      <div class="glass-orb glass-orb-2"></div>
-      <div class="glass-orb glass-orb-3"></div>
-    </div>
+  <body>
+    <!-- Ambient Floating Micro-Dots Background -->
+    <canvas id="bgDotsCanvas" class="bg-dots-canvas" aria-hidden="true"></canvas>
+
+    <!-- Mouse Pointer Trailing Line & Dots Canvas -->
+    <canvas id="cursorTrailCanvas" class="cursor-trail-canvas" aria-hidden="true"></canvas>
     
     <main class="max-w-container px-4">
       
@@ -502,54 +501,90 @@
           <span class="section-badge">Get In Touch</span>
           <h2 class="section-header-title">Let's Connect</h2>
           <p class="section-header-desc mx-auto">
-            Have a question, an opportunity, or just want to say hi? Send me a message below or email me directly at <a href="mailto:voreak.chhinchea@gmail.com" class="text-underline">voreak.chhinchea@gmail.com</a>.
+            I'm always open to discussing new opportunities, project collaborations, or answering questions. Feel free to contact me directly via Gmail or Telegram.
           </p>
         </div>
         
-        <div class="contact-wrapper">
-          <form class="contact-form" id="contactForm">
-            <div class="form-group">
-              <label for="userName">Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="userName"
-                name="user_name"
-                placeholder="Your Name"
-                required
-              />
+        <div class="contact-cards-grid">
+          
+          <!-- Gmail Contact Card -->
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <div class="contact-card-icon email-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-card-info">
+                <span class="contact-card-type">Email</span>
+                <h3 class="contact-card-title">Gmail</h3>
+              </div>
             </div>
-
-            <div class="form-group">
-              <label for="replyTo">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="replyTo"
-                name="reply_to"
-                placeholder="Your Email"
-                required
-              />
+            
+            <p class="contact-card-desc">
+              For professional inquiries, project proposals, or detailed discussions.
+            </p>
+            
+            <div class="contact-card-value">
+              <code>voreak.chhinchea@gmail.com</code>
             </div>
-
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea
-                class="form-control"
-                id="message"
-                rows="5"
-                name="message"
-                placeholder="Your Message"
-                required
-              ></textarea>
+            
+            <div class="contact-card-actions">
+              <a
+                href="mailto:voreak.chhinchea@gmail.com"
+                class="contact-action-btn primary"
+              >
+                <i class="fas fa-paper-plane"></i> Send Email
+              </a>
+              <button
+                type="button"
+                class="contact-action-btn secondary contact-copy-btn"
+                data-copy="voreak.chhinchea@gmail.com"
+                aria-label="Copy email address"
+              >
+                <i class="fas fa-copy"></i> Copy
+              </button>
             </div>
+          </div>
 
-            <button type="submit" class="btn-submit" id="submitBtn">
-              <i class="fas fa-paper-plane"></i> Send Message
-            </button>
+          <!-- Telegram Contact Card -->
+          <div class="contact-card">
+            <div class="contact-card-header">
+              <div class="contact-card-icon telegram-icon">
+                <i class="fab fa-telegram-plane"></i>
+              </div>
+              <div class="contact-card-info">
+                <span class="contact-card-type">Instant Messaging</span>
+                <h3 class="contact-card-title">Telegram</h3>
+              </div>
+            </div>
+            
+            <p class="contact-card-desc">
+              For quick chats, casual messaging, or real-time project collaboration.
+            </p>
+            
+            <div class="contact-card-value">
+              <code>@chhinchea_voreak</code>
+            </div>
+            
+            <div class="contact-card-actions">
+              <a
+                href="https://t.me/chhinchea_voreak"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-action-btn primary"
+              >
+                <i class="fab fa-telegram"></i> Open Chat
+              </a>
+              <button
+                type="button"
+                class="contact-action-btn secondary contact-copy-btn"
+                data-copy="@chhinchea_voreak"
+                aria-label="Copy Telegram username"
+              >
+                <i class="fas fa-copy"></i> Copy
+              </button>
+            </div>
+          </div>
 
-            <div id="form-status" style="margin-top: 15px; font-weight: 500;"></div>
-          </form>
         </div>
       </section>
 
@@ -592,13 +627,17 @@
           <i class="fab fa-github"></i>
           <span class="dock-tooltip">GitHub</span>
         </a>
-        <a href="https://www.linkedin.com/in/voreak-chhinchea/" target="_blank" class="dock-item">
+        <a href="https://www.linkedin.com/in/voreak-chhinchea/" target="_blank" class="dock-item" aria-label="LinkedIn">
           <i class="fab fa-linkedin"></i>
           <span class="dock-tooltip">LinkedIn</span>
         </a>
-        <a href="https://mail.google.com/mail/?view=cm&to=voreak.chhinchea@gmail.com" target="_blank" class="dock-item">
-          <i class="fas fa-envelope-open-text"></i>
-          <span class="dock-tooltip">Email Direct</span>
+        <a href="https://t.me/chhinchea_voreak" target="_blank" rel="noopener noreferrer" class="dock-item" aria-label="Telegram">
+          <i class="fab fa-telegram"></i>
+          <span class="dock-tooltip">Telegram</span>
+        </a>
+        <a href="mailto:voreak.chhinchea@gmail.com" class="dock-item" aria-label="Gmail">
+          <i class="fas fa-envelope"></i>
+          <span class="dock-tooltip">Gmail</span>
         </a>
         <div class="dock-separator"></div>
         <button id="theme-toggle" class="dock-item" aria-label="Toggle Theme">
@@ -622,9 +661,8 @@
       </div>
     </div>
 
-    <!-- EmailJS & Main Scripts -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
